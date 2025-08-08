@@ -1,14 +1,11 @@
-const http = require('http');
+const express = require('express');
+const app = express();
+const PORT = 8081;
 
-const hostname = '0.0.0.0';
-const port = 3000;
-
-const server = http.createServer((req, res) => {
-  res.statusCode = 200;
-  res.setHeader('Content-Type', 'text/plain');
-  res.end('Hello from EC2 and Jenkins CI/CD!\n');
+app.get('/', (req, res) => {
+  res.send('Hello from Jenkins CI/CD pipeline!');
 });
 
-server.listen(port, hostname, () => {
-  console.log(`Server running at http://${hostname}:${port}/`);
+app.listen(PORT, () => {
+  console.log(`App is running on port ${PORT}`);
 });
